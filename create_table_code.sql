@@ -1,0 +1,44 @@
+Create table mdc_ri
+(
+CARRIER	varchar(900) 
+, POL_EFF_DT	DATE
+, TRANS_CD	CHAR(2)
+, JUR_ST_ABBR	CHAR(2)
+, GNDR_CD	CHAR(1)
+, BRTH_YR	varchar(4)
+, ACDT_DT	DATE
+, TRANS_DT	DATE
+, BILL_ID	varchar(100) 
+, BILL_LINE_ID	varchar(100)
+, SERV_DT	DATE
+, SERV_DT_FROM	DATE
+, SERV_DT_TO	DATE
+, PAID_PROC_CD	varchar(25)
+, PAID_PROC_CD_MDFY	varchar(4)
+, PAID_PROC_CD_MDFY_SCND	varchar(4)
+, CHRG_AMT	decimal(11,2)
+, PAID_AMT	decimal(11,2)
+, ICD_DX	varchar(14)
+, ICD_DX_SCND	varchar(14)
+, PRVDR_TAXNMY_CD	varchar(20)
+, MED_PRVDR	varchar(6)
+, PRVDR_ZIP_CD	varchar(3)
+, NTWRK_SERV_CD	CHAR(1)
+, UNIT_CNT	decimal(20,3)
+, PLC_OF_SERV_CD	varchar(8)
+, PAID_PROC_CD_SCND	varchar(25)
+, CLM_ID	varchar(100)
+, CARRIER_GROUP	varchar(100)
+, DT_OF_SERV	DATE
+, ICD10_DX_DER	varchar(14)
+, ICD10_DX_SCND_DER	varchar(14)
+, INPT_EPSD_SEQ_NBR	varchar(100)
+, JUR_ST_ABBR_PRIM	CHAR(2)
+, MED_COST_CTG_CD	CHAR(2)
+, PROC_CD_DER	varchar(25)
+, PROC_GRP_CD_DER	CHAR(2)
+, PRVDR_ST_ABBR	CHAR(2)
+, PRVDR_TAXNMY_GRP_CD_AES_RPT	CHAR(2)
+, UNIT_CNT_DER	int
+, WC_FEE_SCHD_AMT	decimal(11,2)
+);
