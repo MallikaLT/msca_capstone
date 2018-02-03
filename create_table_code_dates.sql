@@ -1,0 +1,44 @@
+Create table mdc_ri
+(
+carrier	varchar(900) 
+, pol_eff_dt	DATE
+, trans_cd	CHAR(2)
+, jur_st	CHAR(2)
+, gndr_cd	CHAR(1)
+, birth_yr	varchar(4)
+, acc_dt	DATE
+, trans_dt	DATE
+, bill_id	varchar(100) 
+, line_no	varchar(100)
+, svc_dt	DATE
+, svc_dt_from	DATE
+, svc_dt_to	DATE
+, proc_cd1	varchar(25)
+, mod1	varchar(4)
+, mod2	varchar(4)
+, chrg_amt	decimal(11,2)
+, paid_amt	decimal(11,2)
+, dx1	varchar(14)
+, dx2	varchar(14)
+, prov_tax	varchar(20)
+, prov_id	varchar(6)
+, prov_zip3	varchar(3)
+, ntwk_cd	CHAR(1)
+, units	decimal(20,3)
+, pos	varchar(8)
+, proc_cd2	varchar(25)
+, clm_id	varchar(100)
+, carrier_grp	varchar(100)
+, svc_dt_der	DATE
+, dx1_der	varchar(14)
+, dx2_der	varchar(14)
+, ip_ep_no	varchar(100)
+, jur_st_der	CHAR(2)
+, med_cst_cat_cd	CHAR(2)
+, proc_cd_der	varchar(25)
+, proc_cd_grp_der	CHAR(2)
+, prov_st_der	CHAR(2)
+, prov_tax_grp	CHAR(2)
+, units_der	int
+, wc_fee_sched_amt	decimal(11,2)
+);
