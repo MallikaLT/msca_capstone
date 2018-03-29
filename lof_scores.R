@@ -97,7 +97,7 @@ get_features<-function(df, cluster = TRUE){
   first10<-ldply(first10, data.frame)
   mode1<-aggregate(PRVDR_ZIP_CD ~ CLM_ID, first10, Mode)
   df<-merge(df, mode1, by = "CLM_ID")
-  colnames(df)[53]<-"clmnt_zip_mode"
+  colnames(df)[54]<-"clmnt_zip_mode"
   
   #get coordinates and miles bt base and service
   coords1<-lapply(as.character(df$PRVDR_ZIP_CD.x), FUN = get_coords)
@@ -105,7 +105,7 @@ get_features<-function(df, cluster = TRUE){
   coords2<-lapply(as.character(df$clmnt_zip_mode), FUN = get_coords)
   coords2<-do.call("rbind", coords2)
   df<-cbind(df, coords1, coords2)
-  names(df)[54:57]<-c("svc_long","svc_lat","base_long","base_lat")
+  names(df)[55:58]<-c("svc_long","svc_lat","base_long","base_lat")
   miles_from_base<-round(mapply(dMiles, df$svc_long, df$svc_lat, df$base_long, df$base_lat),2)
   df<-cbind(df, miles_from_base)
   
@@ -113,7 +113,7 @@ get_features<-function(df, cluster = TRUE){
   #may want to create addtl categorical and binary features later
   if(cluster==TRUE){
     #remove rows NA (first claim for a patient has NA prev DOS)
-    df<-df[,c(42,46:52,58)]
+    df<-df[,c(42,47:53,59)]
     df<-df[complete.cases(df), ]
     return(df)
   } else {
@@ -175,4 +175,4 @@ clmnt_dat<-q_all[q_all$CLM_ID=='1893933',]
 
 plot_ly(clmnt_dat, x = ~DT_OF_SERV, y = ~miles_from_base, type = "scatter",
         mode = "lines+markers", text = ~paste("Proc: ",PROC_CD_DER, '<br>Prov ID: ', MED_PRVDR, 'Prov Zip: ', PRVDR_ZIP_CD.x,
-                                              '<br>Clm ID: ', CLM_ID, '<br>Row ID: ', row_id))
+                                              '<br>Prov Tax: ', tax_desc, '<br>Clm ID: ', CLM_ID, '<br>Row ID: ', row_id))
