@@ -46,7 +46,7 @@ build_sample_data<-function(sample_no, seed_no) {
   ids_set <- sample(unique(rdat$CLM_ID), as.integer(sample_no))
   df_sub<-rdat[rdat$CLM_ID %in% ids_set & rdat$PROC_GRP_CD_DER %in% c(1,2,3,5,6,30,45,50,60,75) &
                  !substring(rdat$PROC_CD_DER,1,1) %in% c("A","B","E","L","K") &
-                 !df_sub$PROC_CD_DER %in% c("S9999","99002", "99070","99080") &
+                 !rdat$PROC_CD_DER %in% c("S9999","99002", "99070","99080") &
                  (nchar(as.character(rdat$PROC_CD_DER))==5 | 
                     nchar(as.character(rdat$PROC_CD_DER))==4), ]
   df_sub<-df_sub[order(df_sub$CLM_ID, df_sub$DT_OF_SERV),]
