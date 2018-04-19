@@ -111,7 +111,7 @@ get_features<-function(df, cluster = TRUE){
            prev_prov = dplyr::lag(MED_PRVDR),
            svc2acc = as.integer(DT_OF_SERV-ACDT_DT),
            trans2svc = as.integer(TRANS_DT-DT_OF_SERV),
-           perc_paid = round(PAID_AMT/CHRG_AMT*100,2),
+           perc_paid = ifelse(PAID_AMT>0 & CHRG_AMT>0, round(PAID_AMT/CHRG_AMT*100,2), ifelse(PAID_AMT<=0,0,PAID_AMT)),
            nRows = n())
   df$days_from_prev<-as.integer(df$DT_OF_SERV-df$prev_dos)
   daily_counts <-as.data.frame(df %>% group_by(CLM_ID, DT_OF_SERV) %>% 
