@@ -177,7 +177,13 @@ zip3_mc_hosp<-as.data.frame(mc_hospitals %>%
                               group_by(zip3 = as.character(zip3)) %>%
                               summarize(nHosp = n()))
 
-
 #create geo data -- identify if the base zip in a large or underserved area
 geo_data<-left_join(zip3_area, zip3_mc_hosp, by = "zip3")
 geo_data$sqMi_per_hosp<-ifelse(!is.na(geo_data$nHosp), round(geo_data$zip3_sqMi/geo_data$nHosp,2), NA)
+                                    
+#get taxonomy decsription 
+tax<-read.csv("cms_taxonomies.csv")
+tax$PROVIDER.TAXONOMY.CODE<-str_trim(tax$PROVIDER.TAXONOMY.CODE)
+tax2<-unique(tax[c("PROVIDER.TAXONOMY.CODE","PROVIDER.TAXONOMY.DESCRIPTION")])
+tax2<-ddply(tax2, "PROVIDER.TAXONOMY.CODE", head, 1)
+
