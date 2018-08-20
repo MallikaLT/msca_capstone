@@ -239,4 +239,16 @@ get_features2<-function(df, cluster = TRUE){
   return(df)
 }
 
+idat<-read.csv("MDC_IL_SY11_17_UChi_20171211.csv")
+
+print(paste0("Successfully loaded row count: ", dim(idat)[1], " and column count: ", dim(idat)[2]))
+print(paste0("Structure of data read in: ", str(idat)))
+                                    
+model_dat<-prepare_data2(idat)
+print(paste0("Successfully prepated data, row count: ", dim(model_dat)[1], " and column count: ", dim(model_dat)[2]))
+                                    
+model_dat_final<-get_features2(model_dat)
+print(paste0("Successfully engineered features, final row count: ", dim(model_dat_final)[1], " and final column count: ", dim(model_dat_final)[2]))
+
+write.csv(model_dat_final, file = "model_features_il.csv")
 
